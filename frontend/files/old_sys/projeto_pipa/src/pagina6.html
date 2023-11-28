@@ -1,0 +1,65 @@
+<html  translate="no">
+    <head>
+        <title>ADIVINHA OS ANIMAIS</title>
+        <link rel="stylesheet" href="../arquivos/estilo.css">
+        <script>
+            var palavra;
+            function iniciar(){
+                palavra = document.getElementById('palavra').innerText.split('');
+                setTimeout(function(){ 
+                    document.getElementById('inicio').play();
+                }, 1000);
+            }
+            function errou(botao){
+                botao.className = 'desativado'; 
+                document.getElementById('erro').play();
+            }
+            function acertou(botao, posicao){
+                botao.className = 'desativado'; 
+                document.getElementById('acerto').play(); 
+                palavra[posicao] = botao.children[0].innerText;
+                document.getElementById('palavra').innerText = palavra.join('');
+                if(palavra.indexOf('_') == -1){
+                    setTimeout(function(){ 
+                        window.location.href = 'pagina7.html'; 
+                    }, 2500);
+                }
+                
+            }
+        </script>
+    </head>
+
+    <body onload="iniciar()">
+
+        <h2 id="palavra">_NÇ_</h2>
+        <a class="casa" href="../iniciar.html">
+            <img src="../arquivos/casa.png" />
+        </a>
+
+        <audio id="inicio">
+            <source src="../arquivos/nivel2_juju.ogg" type="audio/mpeg">
+        </audio>
+
+        <ol class="cut">
+            <li onclick="acertou(this, 3);"><a>A</a></li>
+            <li onclick="errou(this);"><a>E</a></li>
+            <li onclick="errou(this);"><a>I</a></li>
+            <li onclick="acertou(this, 0);"><a>O</a></li>
+            <li onclick="errou(this);"><a>U</a></li>
+        </ol>
+        <img src="../arquivos/onca.png"/>
+
+        <span class="estrela">
+            <img src="../arquivos/estrela.png"/>6
+        </span>
+        
+        
+        <audio controls id="erro">
+            <source src="../arquivos/erro.mp3" type="audio/mpeg">
+        </audio>
+        <audio controls id="acerto">
+            <source src="../arquivos/acerto.mp3" type="audio/mpeg">
+        </audio>
+
+    </body>
+</html>

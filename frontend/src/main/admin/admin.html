@@ -1,0 +1,49 @@
+<div id="clear-background">
+    <!--<h1>ENVIAR NOVO ANIMAL PARA A LISTA</h1>-->
+
+    <div class="row">
+        <div class="col-sm-7">
+            <input type="text" 
+                id="animalName" 
+                name="animalName" 
+                class="form-control-plaintext"
+                placeholder="Nome do animal" 
+                data-ng-model="vm.name" />
+        </div>
+        <div class="col-sm-7">
+            <input type="file" 
+                id="imageUpload" 
+                name="imageUpload" 
+                class="form-control"
+                file-input="vm.file" />
+        </div>
+        <div class="col-sm-7">
+            <button type="submit" class="btn btn-primary" data-ng-click="vm.upload()">Enviar</button>
+        </div>
+    </div>
+
+    <table class="table-light table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Icone</th>
+              <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="animal in vm.animais">
+                <th scope="row">{{ animal.id }}</th>
+                <td>{{ animal.nome }}</td>
+                <td>{{ animal.tipo }}</td>
+                <td>
+                    <img class="img-fluid img-thumbnail" 
+                        data-ng-src="http://localhost:8080/admin/{{ animal.id }}" />
+                </td>
+                <td><a data-ng-click="vm.remover(animal.id)"><i class="bi bi-trash">X</i></a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

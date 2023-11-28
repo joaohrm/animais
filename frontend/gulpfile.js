@@ -1,0 +1,60 @@
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var usemin = require('gulp-usemin');
+var minifyHtml = require('gulp-minify-html');
+var rev = require('gulp-rev');
+var test = require('karma').Server;
+var cp = require('child_process');
+var serve = require('gulp-webserver');
+var sync = require("browser-sync").create();
+
+gulp.task('usemin', function () {
+    return gulp.src('src/main/*.html')
+        .pipe(usemin({
+            html: [minifyHtml({empty: true, conditionals:true})],
+            js: [uglify(), 'concat', rev()]
+        }))
+        .pipe(gulp.dest('src/dist'));
+});
+
+gulp.task('build', function () {
+    gulp.run('usemin');
+});
+
+gulp.task('test', function (done) {
+    new test({
+        configFile: __dirname + '/karma.conf.js',
+        singleRun: false
+      }, function(err){
+            console.log(err);
+            if(err === 0){
+                done();
+            } else {
+                done();
+            }
+        }).start();
+  });
+
+  gulp.task('start', function () {
+    cp.exec('http-server -c-1 -p 13000', err => err);
+  });
+    //exec('http-server -c-1 -p 13000');
+ 
+gulp.task('serve', function() {
+    gulp.src('./')	// <-- your app folder
+    .pipe(serve({
+        livereload: true,
+        open: true,
+        port: 13000	// set a port to avoid conflicts with other local apps
+    }));
+});  
+
+function browserSync(cb) {
+    sync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+}
+
+exports.sync = browserSync;

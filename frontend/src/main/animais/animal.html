@@ -1,0 +1,148 @@
+<div class="container">
+
+    <a class="casa" 
+        href="#" 
+        data-ng-click="vm.opcoes = ''; vm.animal = ''; vm.animais = ''; vm.palavra = ''; vm.sobre = false;"
+        data-ng-if="(vm.hasContent() && !vm.isFinished()) || vm.sobre">
+        <img src="files/old_sys/casa.png" />
+    </a>
+
+    <a href="/admin">admin</a>
+
+    <div data-ng-if="!vm.hasContent() && !vm.isFinished()">
+        <div id="menu" data-ng-if="!vm.sobre">
+            <h1>ADIVINHA OS ANIMAIS</h1>
+    
+            <ol class="botao-inicial">
+                <li >
+                    <a href="" data-ng-click="vm.start()">JOGAR</a>
+                </li>
+                <li>
+                    <a data-ng-click="vm.sobre = true" href="#">SOBRE</a>
+                </li>
+            </ol>
+        </div>
+       
+
+        <button class="btn btn-primary mais" 
+            type="button" 
+            title="mais opções"
+            data-toggle="modal" 
+            data-target="#modalOpcoes" 
+            aria-expanded="false" 
+            aria-controls="modalOpcoes">
+            <img src="files/more.png"/>
+        </button>
+        <!--<a class="sobre btn btn-primary"
+            role="button" 
+            aria-expanded="false" 
+            aria-controls="maisOpcoes" 
+            title="mais opções" 
+            data-toggle="collapse" 
+            href="#maisOpcoes"></a>-->
+
+        <div class="modal fade" 
+            id="modalOpcoes" 
+            tabindex="-1" 
+            role="dialog" 
+            aria-labelledby="modalOpcoes" 
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">MAIS OPÇÕES</h5>
+                    </div>
+                    <div class="modal-body">
+                        
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="tipoJogo">Tipo de jogo</label>
+                            </div>
+                            <select data-ng-model="vm.config.formatoJogo" 
+                                class="custom-select" 
+                                id="tipoJogo">
+                                <option value="palavras" selected>por palavras</option>
+                                <option value="letras">por letras</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="tipoTexto">Tipo de texto</label>
+                            </div>
+                            <select data-ng-model="vm.config.case" 
+                                class="custom-select" 
+                                id="tipoTexto">
+                                <option value="text-uppercase" selected>caixa alta</option>
+                                <option value="text-lowercase">caixa baixa</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="visibilidade">Efeito no animal</label>
+                            </div>
+                            <select data-ng-model="vm.config.efeitoAnimal" 
+                                class="custom-select" 
+                                id="visibilidade">
+                                <option value="none" selected>nenhum</option>
+                                <option value="brightness(0)">sombra</option>
+                                <option value="blur(10px)">borrado</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-if="vm.sobre">
+            <h2>REGRAS DO JOGO</h2>
+            <p>Este jogo possui duas partes, são elas:</p>
+            <p>- Na primeira parte voce deve adivinhar o nome do animal selecionando a opção correspondente corretamente.</p>
+            <p>- Na segunda parte voce deve completar o nome do animal com as letras que estão faltando clicando nas opções apresentadas.</p>
+            <p>Toda a interação no jogo se da através do mouse.</p>
+
+            <h2>COMPETÊNCIAS AO BRINCAR</h2>
+            <p>O jogo foi desenvolvido pensando nas crianças em fase de pré alfabetização e alfabetização, último ano da pré-escola e primeiro ano do ensino fundamental, integrando brincadeira ao aprendizado, desenvolvendo raciocínio lógico, autoconfiança, concentração, atenção e reforçando  a fase de alfabetização de uma forma lúdica.
+            </p><p>O jogo também  amplia a atenção da criança, para que ela consiga através da associação das letras que já conhece ou que esta aprendendo identificar o nome da figura que está pedindo e completar a letra que  está faltando.
+            Fortalecendo a prática de leitura, melhora na escrita e fala, tendo uma melhor compreensão do funcionamento do sistema alfabético.
+            </p>
+        </div>
+
+    </div>
+    
+    <div data-ng-if="vm.hasContent() && !vm.isFinished()">
+
+        <h2 id="palavra" class="{{ vm.config.case }}">{{ vm.palavra }}</h2>
+
+        <ol>
+            <li data-ng-repeat="opcao in vm.opcoes" 
+                data-ng-click="vm.verificaOpcao(opcao)" 
+                class="{{ opcao.class }} {{ vm.config.case }}">
+                <a href="" >{{ opcao.nome }}</a>
+            </li>
+        </ol>
+        <img id="animal-{{ vm.animal.id  }}" 
+            class="animal"
+            style="filter: {{ vm.config.efeitoAnimal }};"
+            src="http://localhost:8080/admin/{{ vm.animal.id }}"/>
+
+            <span class="estrela"><img src="files/estrela.png" />{{ vm.nivel }}</span>
+    </div>
+
+    
+    <div data-ng-if="vm.isFinished()">
+        <h1 class="final">
+            PARABÉNS!!!
+        </h1>
+        <img class="trofeu" src="files/old_sys/trofeu.png">
+        <img class="fogos" src="files/old_sys/fogos.gif">
+    </div>
+
+</div>

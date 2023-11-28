@@ -1,0 +1,22 @@
+{
+    "short_name": "Adivinhe os animais",
+    "name": "Adivinhe os animais",
+    "icons": [
+      {
+        "src": "/arquivos/onca.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/arquivos/onca.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/index.html",
+    "background_color": "#000",
+    "display": "fullscreen",
+    "orientation":  "landscape",
+    "scope": "/maps/",
+    "theme_color": "#000"
+  }

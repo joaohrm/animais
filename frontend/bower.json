@@ -1,0 +1,21 @@
+{
+  "name": "animais",
+  "description": "projeto front de animais",
+  "main": "app.js",
+  "authors": [
+    "João Henrique <joaohrm@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~4.17.0",
+    "angular": "^1.8.3"
+  }
+}

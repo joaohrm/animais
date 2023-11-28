@@ -1,0 +1,63 @@
+<html translate="no">
+    <head>
+        <title>ADIVINHA OS ANIMAIS</title>
+        <link rel="stylesheet" href="../arquivos/estilo.css">
+        <script>
+            function iniciar(){
+                setTimeout(function(){ 
+                    document.getElementById('inicio').play();
+                }, 100);
+
+                setTimeout(function(){ 
+                    document.getElementById('nivel1').play();
+                }, 3500);
+            }
+            function errou(botao){
+                botao.className = 'desativado'; 
+                document.getElementById('erro').play();
+            }
+            function acertou(botao){
+                document.getElementById('acerto').play(); 
+                setTimeout(function(){ 
+                    window.location.href = 'pagina2.html'; 
+                }, 2500);
+            }
+        </script>
+    </head>
+
+    <body onload="iniciar();">
+
+        <a class="casa" href="../iniciar.html">
+            <img src="../arquivos/casa.png" />
+        </a>
+        
+        <ol>
+            <li onclick="errou(this);"><a>JACARÉ</a></li>
+            <li onclick="errou(this);"><a>TUCANO</a></li>
+            <li onclick="errou(this);"><a>ABELHA</a></li>
+            <li onclick="acertou(this);"><a>ONÇA</a></li>
+            <li onclick="errou(this);"><a>PORCO</a></li>
+        </ol>
+        <img src="../arquivos/onca.png"/>
+
+        <span class="estrela">
+            <img src="../arquivos/estrela.png"/>1
+        </span>
+
+        <audio id="inicio">
+            <source src="../arquivos/inicio_juju.ogg" type="audio/mpeg">
+        </audio>
+        
+        <audio id="nivel1">
+            <source src="../arquivos/nivel1_juju.ogg" type="audio/mpeg">
+        </audio>
+        
+        <audio id="erro">
+            <source src="../arquivos/erro.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="acerto">
+            <source src="../arquivos/acerto.mp3" type="audio/mpeg">
+        </audio>
+
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<html translate="no">
+    <head>
+        <title>ADIVINHA OS ANIMAIS</title>
+        <link rel="stylesheet" href="../arquivos/estilo.css">
+        <script>
+            function errou(botao){
+                botao.className = 'desativado'; 
+                document.getElementById('erro').play();
+            }
+            function acertou(botao){
+                document.getElementById('acerto').play(); 
+                setTimeout(function(){ 
+                    window.location.href = 'pagina6.html'; 
+                }, 2500);
+            }
+        </script>
+    </head>
+
+    <body>
+        <a class="casa" href="../iniciar.html">
+            <img src="../arquivos/casa.png" />
+        </a>
+
+        
+        <ol>
+            <li onclick="errou(this);"><a>LOBO</a></li>
+            <li onclick="acertou(this);"><a>TUCANO</a></li>
+            <li onclick="errou(this);"><a>BALEIA</a></li>
+            <li onclick="errou(this);"><a>JACARÉ</a></li>
+            <li onclick="errou(this);"><a>FORMIGA</a></li>
+        </ol>
+        <img class="vaca" src="../arquivos/tucano.png"/>
+
+        <span class="estrela">
+            <img src="../arquivos/estrela.png"/>5
+        </span>
+        
+        
+        <audio controls id="erro">
+            <source src="../arquivos/erro.mp3" type="audio/mpeg">
+        </audio>
+        <audio controls id="acerto">
+            <source src="../arquivos/acerto.mp3" type="audio/mpeg">
+        </audio>
+
+    </body>
+</html>

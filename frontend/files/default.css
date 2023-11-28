@@ -1,0 +1,205 @@
+html {
+    height: 100%;
+}
+
+body {
+    text-align: center;
+    display: block;
+    background-image: url(fundo.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #45b540e8;
+    background-size: cover;
+}
+
+h1, h2 {
+    font-family: arial;
+    margin-top: 10%;
+    font-size: 50px;
+    color: #065182;
+    /* text-shadow: 2px 0px 6px #000; */
+    letter-spacing: 2px;
+}
+
+h2 {
+    margin-top: 10%;
+}
+
+h1.final{
+    margin-top: 10%;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #FFF;
+}
+
+button.mais {
+    position: fixed;
+    right: 8px;
+    top: 8px;
+    padding: 0px 6px;
+    border-radius: 4px;
+    background: #45b540e8;
+    border: 1px solid #777;
+}
+
+button.mais img {
+    width: 16px;
+    float: left;
+}
+
+.container img.animal {
+    width: 12vw;
+    position: absolute;
+    left: calc(50% - 6vw);
+    bottom: 10%;
+    z-index: -1;
+    transition: all 0.3s linear;
+}
+
+span.estrela {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 64px;
+    text-align: center;
+    font-family: cursive;
+    color: #CC0000;
+    padding-right: 5px;
+}
+
+span.estrela img {
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    bottom: unset;
+}
+
+img.estrela::before {
+    content: attr(title);
+}
+
+img.animal_horizontal {
+    width: 16vw;
+    left: calc(50% - 8vw);
+}
+
+img.fogos {
+    width: 340px;
+    z-index: 1;
+    bottom: 340px;
+    left: calc(50% - 170px);
+}
+img.balancar {
+    animation-name: balancar;
+    animation-duration: 6s;
+}
+
+img.trofeu {
+    width: 200px;
+    z-index: 2;
+}
+
+a.casa {
+    width: 40px;
+    opacity: 0.8;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+}
+a.casa img {
+    width: 100%;
+    left: unset;
+    bottom: unset;
+}
+
+ol {
+    display: flex;
+    flex-flow: row;
+    margin: 10% auto 0 auto;
+    justify-content: center;
+}
+
+ol.cut {
+    margin: 0 auto 50px auto;
+}
+
+ol li {
+    list-style-type: none;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 2vw;
+    background: #5bb42e;
+    padding: 12px 22px;
+    border-radius: 4px;
+    margin: 18px;
+    box-shadow: 0px 0px 4px 1px #333;
+    transition: all 0.1s linear;
+}
+
+ol.botao-inicial {
+    flex-flow: row;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 5%;
+}
+
+ol.botao-inicial li {
+    cursor: pointer;
+    font-family: tahoma;
+    font-size: 2vw;
+    background: #5bb42e;
+    border-radius: 12px;
+    margin: 40px;
+    box-shadow: 0px 0px 4px 1px #333;
+    width: 14vw;
+}
+
+ol.botao-inicial li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+ol li:not(.desativado):hover {
+    box-shadow: 0px 0px 3px 2px #000;
+}
+
+ol li.desativado { cursor: no-drop; opacity: 0.5; text-decoration: line-through; pointer-events: none; }
+a { color: #FFF; text-decoration: none; } 
+p {
+    text-align: left;
+    font-size: 22px;
+    color: #065182;
+    font-family: arial;
+    max-width: 900px;
+    margin: 0 auto 10px auto;
+}
+
+audio {
+    display: none;
+}
+
+@keyframes balancar {
+    10% { margin-right: -10px; }
+    30% { margin-right: 0; }
+    50% { margin-right: 10px; }
+    75% { margin-right: 0; }
+    100% { margin-right: -10px; }
+}
+
+.fade {
+    transition: opacity .15s linear !important;
+}
+
+.modal.fade .modal-dialog {
+	transition:-webkit-transform 0.3s ease-out !important;
+	transition:transform 0.3s ease-out !important;
+	transition:transform 0.3s ease-out,-webkit-transform 0.3s ease-out !important;
+}
