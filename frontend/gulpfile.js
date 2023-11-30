@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+var sync = require("browser-sync").create();
+var netlify = require('gulp-netlify');
 var uglify = require('gulp-uglify');
 var usemin = require('gulp-usemin');
 var minifyHtml = require('gulp-minify-html');
@@ -6,9 +8,9 @@ var rev = require('gulp-rev');
 var test = require('karma').Server;
 var cp = require('child_process');
 var serve = require('gulp-webserver');
-var sync = require("browser-sync").create();
 
-gulp.task('usemin', function () {
+
+/*gulp.task('usemin', function () {
     return gulp.src('src/main/*.html')
         .pipe(usemin({
             html: [minifyHtml({empty: true, conditionals:true})],
@@ -47,7 +49,7 @@ gulp.task('serve', function() {
         open: true,
         port: 13000	// set a port to avoid conflicts with other local apps
     }));
-});  
+});  */
 
 function browserSync(cb) {
     sync.init({
@@ -57,7 +59,7 @@ function browserSync(cb) {
     });
 }
 
-var netlify = require('gulp-netlify')
+
 gulp.task('deploy', function () {
   gulp.src('./')
     .pipe(netlify({
