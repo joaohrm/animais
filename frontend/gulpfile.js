@@ -61,8 +61,8 @@ var netlify = require('gulp-netlify')
 gulp.task('deploy', function () {
   gulp.src('./public/**/*')
     .pipe(netlify({
-      site_id: NETLIFY_SITE_ID,
-      access_token: NETLIFY_ACCESS_TOKEN
+      site_id: "306dfefe-5ed3-463e-835a-64430fc70bb9",
+      access_token: "nfp_BExswcnmEp721Fna19cFPdsoPkgyejxpf72b"
     }))
 })
 
