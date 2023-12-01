@@ -10,7 +10,7 @@ var cp = require('child_process');
 var serve = require('gulp-webserver');
 
 
-/*gulp.task('usemin', function () {
+gulp.task('usemin', function () {
     return gulp.src('src/main/*.html')
         .pipe(usemin({
             html: [minifyHtml({empty: true, conditionals:true})],
@@ -18,7 +18,7 @@ var serve = require('gulp-webserver');
         }))
         .pipe(gulp.dest('src/dist'));
 });
-
+/*
 gulp.task('build', function () {
     gulp.run('usemin');
 });
@@ -66,6 +66,6 @@ gulp.task('deploy', function () {
       site_id: "306dfefe-5ed3-463e-835a-64430fc70bb9",
       access_token: "nfp_BExswcnmEp721Fna19cFPdsoPkgyejxpf72b"
     }))
-})
+});
 
 exports.sync = browserSync;
