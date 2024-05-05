@@ -24,15 +24,16 @@ function animalController($scope, $injector, $timeout){
         efeitoAnimal: 'none'
     }
 
-    var metodosPublicos = {
-        hasContent: _hasContent,
-        isFinished: _isFinished,
-        isOpcaoCorreta: _isOpcaoCorreta,
-        start: _start,
+    let metodosPublicos = {
+        isAnimalDefinido: _isAnimalDefinido,
+        isEncerrado: _isEncerrado,
+        iniciar: _iniciar,
         verificaOpcao: _verificaOpcao,
     }
 
-    function _start(){
+    Object.assign(vm, metodosPublicos);
+
+    function _iniciar(){
         animalService.getAnimalList().then(function(data){
             vm.animais = data;
             vm.nivel = 1;
@@ -41,7 +42,7 @@ function animalController($scope, $injector, $timeout){
                 somInicio.play();
                 setTimeout(function(){ somNivel1.play(); }, 3000);
 
-                callTipoJogo();
+                chamaTipoJogo();
 
                 vm.ignoraAnimal = [];
             }
@@ -49,11 +50,15 @@ function animalController($scope, $injector, $timeout){
     }
 
     function getLetras(){
+        //pega um animal aleatoriamente
         vm.animal = getAnimalAleatorio(vm.animais, 1)[0];
+      
+        //letras do nome do animal divididas
         var letras = vm.animal.nome.split('');
        
         var letrasRemovidas = [];
 
+        //monta uma lista com QUANT_LETRAS de letras para remover do nome do animal e define suas posições
         for(let i = 0; i < QUANT_LETRAS; i++){
             let pos = Math.floor(Math.random() * letras.length);
             while(letras[pos] == '_'){
@@ -63,8 +68,12 @@ function animalController($scope, $injector, $timeout){
             letras[pos] = '_';
         }
 
-        vm.palavra =  letras.join('');
+        //remonta o nome do animal com os espaços
+        vm.combinacaoLetras =  letras.join('');
+        //cria opções com base no alfabeto menos as letras removidas com pos 99
         vm.opcoes = ALFABETO.filter(letra => letrasRemovidas.map(palavra => palavra.nome.toUpperCase()).join('').indexOf(letra.nome.toUpperCase()) == -1).slice(0,3);
+        reiniciaClasseBotoes();
+        //adiciona as opções as letras removidas corretas com o pos correto
         for(let i = 0; i < QUANT_LETRAS; i++){
             vm.opcoes.push(letrasRemovidas[i]);
         }
@@ -72,20 +81,22 @@ function animalController($scope, $injector, $timeout){
     }
 
     function getPalavras(){
+        //pega uma quantidade de animais aleatorios
         vm.opcoes = getAnimalAleatorio(vm.animais, QUANT_PALAVRAS);
-        clearClass();
+        reiniciaClasseBotoes();
+        //sorteia um animal da lista pré-selecionada
         getAnimalSorteado(vm.opcoes);
 
-        function clearClass(){
-            vm.opcoes.forEach(opt => opt.class = '');
-        }
-
         function getAnimalSorteado(animais){
-            vm.animal = animalService.getRandomAnimal(animais);
+            vm.animal = animalService.getAnimalSorteado(animais);
         }
     }
 
-    function callTipoJogo(){
+    function reiniciaClasseBotoes(){
+        vm.opcoes.forEach(opt => opt.class = '');
+    }
+
+    function chamaTipoJogo(){
         if(vm.config.formatoJogo == 'palavras'){
             getPalavras();
         } else {
@@ -93,15 +104,20 @@ function animalController($scope, $injector, $timeout){
         }
     }
 
-    function _isOpcaoCorreta(opcao){
-        if(vm.palavra){
+    function isOpcaoCorreta(opcao){
+        //tipo palavras não valida aqui
+        if(vm.config.formatoJogo == 'letras'){
+            //se opção for diferente de 99, ou seja faz parte das letras do animal
             if(opcao.pos != 99){
-                var letras = vm.palavra.split('');
+                var letras = vm.combinacaoLetras.split('');
+                //substitui espaço pela letra correta
                 letras[opcao.pos] = opcao.nome;
-                vm.palavra = letras.join('');
-
-                if(vm.palavra.indexOf('_') == -1){
+                //reuni letras
+                vm.combinacaoLetras = letras.join('');
+                //se não possui mais espaços avança
+                if(vm.combinacaoLetras.indexOf('_') == -1){
                     vm.avanca = true;
+                    somAcerto.play();
                 } else {
                     vm.avanca = false;
                 }
@@ -109,9 +125,16 @@ function animalController($scope, $injector, $timeout){
             } else {
                 return false;
             }
-        } 
-        vm.avanca = true;
-        return Boolean(opcao.nome == vm.animal.nome);
+        } else {
+            let correto = Boolean(opcao.nome == vm.animal.nome)
+            vm.avanca = true;
+
+            if(correto){
+                somAcerto.play();
+                return true;
+            }
+        }
+        
     }
 
     function getAnimalAleatorio(animais, quant){
@@ -128,9 +151,9 @@ function animalController($scope, $injector, $timeout){
 
     function _verificaOpcao(opcao){
         opcao.class = 'desativado';
-        if(_isOpcaoCorreta(opcao)){
-            somAcerto.play();
-            
+        //verifica se a opção esta correta
+        if(isOpcaoCorreta(opcao)){
+            //proxima fase
             if(vm.avanca){
                 resetEfeitoAnimal();
                 $timeout(function(){
@@ -151,18 +174,15 @@ function animalController($scope, $injector, $timeout){
             somFinal.play();
             vm.final = true;
         } else {
-            callTipoJogo();
+            chamaTipoJogo();
         }
     }
 
-    function _hasContent(){
+    function _isAnimalDefinido(){
         return Boolean(vm.animal);
     }
 
-    function _isFinished(){
+    function _isEncerrado(){
         return Boolean(vm.final);
     }
-
-    Object.assign(vm, metodosPublicos);
-
 }

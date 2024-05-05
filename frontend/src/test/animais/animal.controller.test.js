@@ -4,17 +4,25 @@ describe('animalController', function() {
     var $controller, $scope;
 
     beforeEach(inject(function(_$controller_){
-        // The injector unwraps the underscores (_) from around the parameter names when matching
         $controller = _$controller_;
         $controller = $controller('animalController', {'$scope': $scope});
     }));
 
-   
+    describe('verifica se esta definido o metodo', function() {
+        it('isAnimalDefinido', function() {
+            expect($controller.isAnimalDefinido).toBeDefined();
+        });
 
-    describe('isOpcaoCorreta', function() {
+        it('isEncerrado', function() {
+            expect($controller.isEncerrado).toBeDefined();
+        });
 
-        it('deveria verificar se a opção é o nome do animal', function() {
-            expect($scope.animal.nome).toEqual('teste');
+        it('iniciar', function() {
+            expect($controller.iniciar).toBeDefined();
+        });
+
+        it('verificaOpcao', function() {
+            expect($controller.verificaOpcao).toBeDefined();
         });
     });
 });

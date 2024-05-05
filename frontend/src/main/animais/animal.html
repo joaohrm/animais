@@ -2,20 +2,18 @@
 
     <a class="casa" 
         href="#" 
-        data-ng-click="vm.opcoes = ''; vm.animal = ''; vm.animais = ''; vm.palavra = ''; vm.sobre = false;"
-        data-ng-if="(vm.hasContent() && !vm.isFinished()) || vm.sobre">
-        <img src="files/old_sys/casa.png" />
+        data-ng-click="vm.opcoes = ''; vm.animal = ''; vm.animais = ''; vm.combinacaoLetras = ''; vm.sobre = false;"
+        data-ng-if="(vm.isAnimalDefinido() && !vm.isFinished()) || vm.sobre">
+        <img src="files/casa.png" />
     </a>
 
-    <a href="/admin">admin</a>
-
-    <div data-ng-if="!vm.hasContent() && !vm.isFinished()">
+    <div data-ng-if="!vm.isAnimalDefinido() && !vm.isFinished()">
         <div id="menu" data-ng-if="!vm.sobre">
             <h1>ADIVINHA OS ANIMAIS</h1>
     
             <ol class="botao-inicial">
                 <li >
-                    <a href="" data-ng-click="vm.start()">JOGAR</a>
+                    <a href="" data-ng-click="vm.iniciar()">JOGAR</a>
                 </li>
                 <li>
                     <a data-ng-click="vm.sobre = true" href="#">SOBRE</a>
@@ -33,13 +31,6 @@
             aria-controls="modalOpcoes">
             <img src="files/more.png"/>
         </button>
-        <!--<a class="sobre btn btn-primary"
-            role="button" 
-            aria-expanded="false" 
-            aria-controls="maisOpcoes" 
-            title="mais opções" 
-            data-toggle="collapse" 
-            href="#maisOpcoes"></a>-->
 
         <div class="modal fade" 
             id="modalOpcoes" 
@@ -91,11 +82,12 @@
                             </select>
                         </div>
 
+                        <a href="/admin" class="database">DATABASE</a>
+
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
                     </div>
                 </div>
             </div>
@@ -117,9 +109,9 @@
 
     </div>
     
-    <div data-ng-if="vm.hasContent() && !vm.isFinished()">
+    <div data-ng-if="vm.isAnimalDefinido() && !vm.isFinished()">
 
-        <h2 id="palavra" class="{{ vm.config.case }}">{{ vm.palavra }}</h2>
+        <h2 id="palavra" class="{{ vm.config.case }}">{{ vm.combinacaoLetras }}</h2>
 
         <ol>
             <li data-ng-repeat="opcao in vm.opcoes" 
@@ -130,7 +122,7 @@
         </ol>
         <img id="animal-{{ vm.animal.id  }}" 
             class="animal"
-            style="filter: {{ vm.config.efeitoAnimal }};"
+            style="filter: {{ vm.config.efeitoAnimal }}"
             src="http://localhost:8080/admin/{{ vm.animal.id }}"/>
 
             <span class="estrela"><img src="files/estrela.png" />{{ vm.nivel }}</span>
@@ -141,8 +133,8 @@
         <h1 class="final">
             PARABÉNS!!!
         </h1>
-        <img class="trofeu" src="files/old_sys/trofeu.png">
-        <img class="fogos" src="files/old_sys/fogos.gif">
+        <img class="trofeu" src="files/trofeu.png">
+        <img class="fogos" src="files/fogos.gif">
     </div>
 
 </div>

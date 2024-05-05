@@ -3,6 +3,7 @@ app.service('adminService', ['$injector', adminService]);
 function adminService($injector){
     var Restangular = $injector.get('Restangular');
 
+    //Restangular.setBaseUrl('https://animais.onrender.com');
     Restangular.setBaseUrl('http://localhost:8080');
 
     var metodosPublicos = {

@@ -16,6 +16,7 @@ function adminController($scope, $injector, Upload){
     init();
 
     function init(){
+        angular.element(document.querySelector('.modal-backdrop')).remove();
         _getList();
     }
 

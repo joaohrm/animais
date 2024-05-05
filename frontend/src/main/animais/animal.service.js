@@ -4,7 +4,7 @@ function animalService($injector){
     var Restangular = $injector.get('Restangular');
 
     var metodosPublicos = {
-        getRandomAnimal: _getRandomAnimal,
+        getAnimalSorteado: _getAnimalSorteado,
         getAnimalList: _getAnimalList
     }
 
@@ -21,7 +21,7 @@ function animalService($injector){
 
     }*/
 
-    function _getRandomAnimal(animals){
+    function _getAnimalSorteado(animals){
         var randomAnimal = animals[animals.length * Math.random() | 0];
         return randomAnimal;
     }
@@ -34,6 +34,7 @@ function animalService($injector){
 
     function resource(params){
         var config = function(RestangularConfigurer){
+            //RestangularConfigurer.setBaseUrl('https://animais.onrender.com');
             RestangularConfigurer.setBaseUrl('http://localhost:8080');
             RestangularConfigurer.setDefaultHeaders({
                 'Access-Control-Allow-Origin': '*',
