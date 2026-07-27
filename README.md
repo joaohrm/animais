@@ -86,7 +86,7 @@ docker-compose up -d
 
 ---
 
-## � Exemplos - Screenshots
+## 🖼️ Exemplos - Screenshots
 
 ### Tela Inicial
 
