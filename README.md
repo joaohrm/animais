@@ -1,8 +1,42 @@
-# 🐾 Animais - Projeto Pedagógico
+# 🐾 Animais
 
-Um projeto educacional completo para gerenciamento de informações sobre animais, construído com arquitetura de cliente-servidor moderna.
+![Java](https://img.shields.io/badge/Java-8-ED8B00?logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-2.7.6-6DB33F?logo=springboot&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![AngularJS](https://img.shields.io/badge/AngularJS-1.8.3-DD0031?logo=angularjs&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white)
+![REST API](https://img.shields.io/badge/REST-API-blue)
+![JPA](https://img.shields.io/badge/JPA-Hibernate-59666C)
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white)
 
-**Descrição do projeto:** Sistema interativo para cadastro, consulta e gerenciamento de dados de animais, desenvolvido como projeto pedagógico para demonstrar práticas de desenvolvimento full-stack.
+
+Projeto pessoal voltado ao ensino, desenvolvido para demonstrar práticas de desenvolvimento Full Stack utilizando Java, Spring Boot, PostgreSQL e AngularJS.
+
+**Descrição do projeto:** Além da programação, tenho interesse por educação e desenvolvimento de ferramentas didáticas. Este projeto nasceu da união dessas duas áreas, utilizando uma aplicação Full Stack para criar um ambiente lúdico sobre animais, ao mesmo tempo em que demonstra práticas de desenvolvimento de software.
+
+---
+
+
+## 🔧 BACKEND
+
+**Localização:** [backend/](backend/)
+
+**Descrição:** API RESTful robusta para gerenciamento de dados, desenvolvida com Spring Boot e PostgreSQL, fornecendo persistência de dados e lógica de negócio.
+
+**Stack Utilizado:**
+- **Spring Boot 2.7.6** - Framework Java para desenvolvimento rápido de aplicações
+- **Spring Data JPA** - Camada de acesso a dados com ORM Hibernate
+- **PostgreSQL** - Banco de dados relacional
+- **Java 8** - Linguagem de programação
+- **Maven** - Gerenciador de dependências e build
+- **Jackson** - Serialização/desserialização JSON
+
+**Como executar:**
+```bash
+cd backend
+./mvnw spring-boot:run
+```
 
 ---
 
@@ -25,28 +59,6 @@ Um projeto educacional completo para gerenciamento de informações sobre animai
 cd frontend
 npm install
 gulp serve
-```
-
----
-
-## 🔧 BACKEND
-
-**Localização:** [backend/](backend/)
-
-**Descrição:** API RESTful robusta para gerenciamento de dados, desenvolvida com Spring Boot e PostgreSQL, fornecendo persistência de dados e lógica de negócio.
-
-**Stack Utilizado:**
-- **Spring Boot 2.7.6** - Framework Java para desenvolvimento rápido de aplicações
-- **Spring Data JPA** - Camada de acesso a dados com ORM Hibernate
-- **PostgreSQL** - Banco de dados relacional
-- **Java 8** - Linguagem de programação
-- **Maven** - Gerenciador de dependências e build
-- **Jackson** - Serialização/desserialização JSON
-
-**Como executar:**
-```bash
-cd backend
-./mvnw spring-boot:run
 ```
 
 ---
