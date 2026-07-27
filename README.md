@@ -88,18 +88,22 @@ docker-compose up -d
 
 ## � Exemplos - Screenshots
 
-A aplicação inclui os seguintes exemplos de interface:
+### Tela Inicial
+
+![Tela Inicial do Projeto](arquivos/inicial.png)
+
+**Galeria de Exemplos:**
 
 | Descrição | Arquivo |
 |-----------|---------|
-| Tela Inicial | [arquivos/inicial.png](arquivos/inicial.png) |
-| Menu com Letras | [arquivos/letras.png](arquivos/letras.png) |
-| Menu Administrativo | [arquivos/menu_admin.png](arquivos/menu_admin.png) |
-| Efeito de Sombra | [arquivos/sombra.png](arquivos/sombra.png) |
+| Tela Inicial | [inicial.png](arquivos/inicial.png) |
+| Menu com Letras | [letras.png](arquivos/letras.png) |
+| Menu Administrativo | [menu_admin.png](arquivos/menu_admin.png) |
+| Efeito de Sombra | [sombra.png](arquivos/sombra.png) |
 
 ---
 
-## �📋 TODO - Roadmap de Modernização
+## ✅ TODO - Roadmap de Modernização
 
 - [ ] **Modernizar Frontend para React.js** - Migrar de AngularJS para React com Hooks e Context API
 - [ ] Atualizar para Java 17+
