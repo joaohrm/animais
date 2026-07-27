@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   db:
     image: postgres
@@ -9,9 +7,14 @@ services:
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: animais
     ports:
-      - '5432:5432'
+      - '5433:5432'
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   pgadmin:
     image: dpage/pgadmin4
     restart: always
@@ -22,3 +25,6 @@ services:
       - '15432:80'
     depends_on:
     - db
+
+volumes:
+  pgdata:

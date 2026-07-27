@@ -1,10 +1,16 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/animais
+    url: jdbc:postgresql://127.0.0.1:5433/animais
     username: postgres
     password: admin
+  sql:
+    init:
+      mode: never
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   jpa:
     database: POSTGRESQL
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     show-sql: false
