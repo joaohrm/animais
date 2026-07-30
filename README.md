@@ -15,6 +15,19 @@ Projeto pessoal voltado ao ensino, desenvolvido para demonstrar práticas de des
 
 **Descrição do projeto:** Além da programação, tenho interesse por educação e desenvolvimento de ferramentas didáticas. Este projeto nasceu da união dessas duas áreas, utilizando uma aplicação Full Stack para criar um ambiente lúdico sobre animais, ao mesmo tempo em que demonstra práticas de desenvolvimento de software.
 
+## 📂 Estrutura do Repositório
+
+```text
+.
+├── .github/
+│   └── images/              # Imagens utilizadas no README
+├── backend/                 # API REST Spring Boot
+├── frontend-angularjs/      # Aplicação AngularJS (atual)
+├── frontend-react/          # Nova implementação em React
+├── .gitignore
+└── README.md
+```
+
 ---
 
 
@@ -40,9 +53,9 @@ cd backend
 
 ---
 
-## 📱 FRONTEND
+## 📱 FRONTEND ANGULARJS (Legado)
 
-**Localização:** [frontend/](frontend/)
+**Localização:** [frontend-angularjs/](frontend-angularjs/)
 
 **Descrição:** Interface web responsiva desenvolvida com AngularJS, oferecendo uma experiência interativa para manipular dados de animais.
 
@@ -56,12 +69,24 @@ cd backend
 
 **Como executar:**
 ```bash
-cd frontend
+cd frontend-angularjs
 npm install
 gulp serve
 ```
 
 ---
+
+## ⚛️ FRONTEND REACT (Em desenvolvimento)
+
+**Localização:** [frontend-react/](frontend-react/)
+
+**Descrição:** Nova implementação da interface utilizando React, criada para substituir gradualmente a versão em AngularJS, adotando uma arquitetura mais moderna e de fácil manutenção.
+
+**Status:** 🚧 Em desenvolvimento
+
+
+---
+
 
 ## 🎯 GERAL
 
@@ -98,20 +123,23 @@ docker-compose up -d
 
 ---
 
-## 🖼️ Exemplos - Screenshots
+## 🖼️ Exemplos - ## 🖼️ Screenshots
 
 ### Tela Inicial
 
-![Tela Inicial do Projeto](arquivos/inicial.png)
+![Tela Inicial](.github/images/inicial.png)
 
-**Galeria de Exemplos:**
+### Menu por Letras
 
-| Descrição | Arquivo |
-|-----------|---------|
-| Tela Inicial | [inicial.png](arquivos/inicial.png) |
-| Menu com Letras | [letras.png](arquivos/letras.png) |
-| Menu Administrativo | [menu_admin.png](arquivos/menu_admin.png) |
-| Efeito de Sombra | [sombra.png](arquivos/sombra.png) |
+![Menu Letras](.github/images/letras.png)
+
+### Menu Administrativo
+
+![Menu Administrativo](.github/images/menu_admin.png)
+
+### Efeito de Sombra
+
+![Sombra](.github/images/sombra.png)
 
 ---
 
